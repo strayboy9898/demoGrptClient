@@ -1,5 +1,6 @@
 package com.demo.spring.grpc.core.controller;
 
+import com.demo.spring.grpc.core.schema.CheckDriverId;
 import com.demo.spring.grpc.core.schema.PingRequest;
 import com.demo.spring.grpc.core.service.PongService;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,11 @@ public class PingController {
     @PostMapping(path = "/pingClient", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> ping(@RequestBody PingRequest request) {
         return ResponseEntity.ok(pongService.ping(request));
+    }
+
+    @PostMapping(path = "/checkEntity", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> checkEntity(@RequestBody CheckDriverId request) {
+        return ResponseEntity.ok(pongService.checkDriver(request));
     }
 
 }

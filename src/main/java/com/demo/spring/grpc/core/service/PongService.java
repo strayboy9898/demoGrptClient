@@ -8,6 +8,8 @@ import io.grpc.ManagedChannelBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import com.demo.spring.grpc.core.schema.CheckDriverId;
+import com.demo.spring.grpc.core.schema.DriverEntity;
 
 @Service
 @Slf4j
@@ -24,5 +26,19 @@ public class PongService {
 
         channel.shutdown();
         return helloResponse;
+    }
+
+    public DriverEntity checkDriver(CheckDriverId checkDriverId) {
+
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6790)
+                .usePlaintext()
+                .build();
+        CoreServiceGrpc.CoreServiceBlockingStub stub
+                = CoreServiceGrpc.newBlockingStub(channel);
+
+        DriverEntity driverEntity = stub.checkDriver(checkDriverId);
+
+        channel.shutdown();
+        return driverEntity;
     }
 }

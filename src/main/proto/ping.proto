@@ -16,6 +16,19 @@ message PingResponse {
     string message = 2;
 }
 
+message CheckDriverId {
+    int64 id = 1;
+}
+
+message DriverEntity {
+    int64 id = 1;
+    string name = 2;
+    int64 age = 3;
+    string numberPhone = 4;
+}
+
 service CoreService {
-    rpc Ping (PingRequest) returns (PingResponse);
+    rpc Ping (PingRequest) returns (PingResponse) {}
+
+    rpc CheckDriver (CheckDriverId) returns (DriverEntity) {}
 }

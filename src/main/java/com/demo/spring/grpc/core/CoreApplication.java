@@ -7,10 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.File;
 
-/**
- * Created by thinhda.
- * Date: 2019-08-18
- */
 @SpringBootApplication
 public class CoreApplication implements DisposableBean, CommandLineRunner {
 
